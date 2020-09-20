@@ -1,0 +1,673 @@
+﻿function printMe(innerHTML) {
+    var myframe = document.createElement('IFRAME');
+    myframe.domain = document.domain;
+    myframe.style.position = "absolute";
+    myframe.style.top = "-10000px";
+    document.body.appendChild(myframe);
+    myframe.contentDocument.write(innerHTML);
+    setTimeout(function () {
+        myframe.focus();
+        myframe.contentWindow.print();
+        myframe.parentNode.removeChild(myframe); // remove frame
+    }, 1000); // wait for images to load inside iframe
+    window.focus();
+}
+
+function printdivsdf(innerHTML) {
+    var headstr = "";
+    var footstr = "";
+    var newstr = innerHTML;
+    var oldstr = document.body.innerHTML;
+    document.body.innerHTML = headstr + newstr + footstr;
+    window.print();
+    document.body.innerHTML = oldstr;
+    return false;
+}
+
+function printDiv(id, imagelogo) {
+
+    var divToPrint = document.getElementById('DivIdToPrint');
+
+
+    var newWin = window.open('', 'Print-Window', 'menubar=1,resizable=1,width=800,height=600');
+   
+
+    newWin.document.open();
+
+  newWin.document.write("<html><body onload='window.print()'><img src='" + imagelogo + "' style=' position: absolute;margin-left: 260px;margin-top: 40px;z-index: 10;'/>" + $(id).html() + "</body></html>");
+   
+    newWin.document.close();
+}
+
+function inlocdo() {
+//    var newWin = window.open('', 'Print-Window', 'menubar=1,resizable=1,width=800,height=600');
+
+
+//    newWin.document.open();
+
+
+//    newWin.document.write("<html><head>" + $("#Head1").html() + "</head><body onload='window.print()'>" + $("#cmDiagramPrint").html() + "</body></html>");
+
+//    newWin.document.close();
+
+    printdivsdf("<html><head>" + $("#Head1").html() + "</head><body onload='window.print()'>" + $("#cmDiagramPrint").html() + "</body></html>");
+    return false;
+}
+
+$(document).ready(function () {
+
+
+
+    $(".lkPrintDoc").click(function () {
+        //        //$(".cmseal img").show();
+        //        $(".cldivContentDocVn .content1").css("font-size", "14px");
+        //        $("#divContentDoc").printArea({ mode: "popup", popClose: false });
+        //        $(".cldivContentDocVn .content1").css("font-size", "12px");
+        //        // $(".cmseal img").hide();
+
+
+        printDiv("#divContentDoc", $(".cldivContentDocVn").css("background-image").substring(5));
+    });
+
+    $(".lkPrintDiagram").click(function () {
+
+        var newWin = window.open('', 'Print-Window', 'menubar=1,resizable=1,width=800,height=600');
+
+
+        newWin.document.open();
+
+
+        newWin.document.write("<html><head>" + $("#ctl00_Head1").html() + "</head><body onload='window.print()'>" + $("#cmDiagramPrint").html() + "</body></html>");
+
+        newWin.document.close();
+
+
+    });
+
+    $("#divltrLienQuanHieuLucTungPhanDialog").dialog({
+        autoOpen: false,
+        height: "auto",
+        width: 900,
+        resizable: false,
+        modal: true,
+        open: function () {
+            $('html,body').css('overflow', 'hidden');
+            $(".ui-widget-overlay").click(function () {
+                $("#divltrLienQuanHieuLucTungPhanDialog").dialog("close");
+            });
+        },
+        close: function () {
+            $('html,body').css('overflow', 'auto');
+        }
+    });
+
+    $("#divltrDanChieuDialog").dialog({
+        autoOpen: false,
+        height: "auto",
+        width: 720,
+        resizable: false,
+        modal: true
+    });
+
+    $("#fist-login-dialog-form").dialog({
+        autoOpen: false,
+        height: "auto",
+        width: 500,
+        resizable: false,
+        modal: true,
+        buttons: {
+            "Đóng": function () {
+                $(this).dialog("close");
+            }
+        }
+    });
+    $("#IsExpire-login-dialog-form").dialog({
+        autoOpen: false,
+        height: "auto",
+        width: 500,
+        resizable: false,
+        modal: true,
+        buttons: {
+            "Đóng": function () {
+                $(this).dialog("close");
+            }
+        }
+    });
+    $("#error-dialog-form").dialog({
+        autoOpen: false,
+        height: "auto",
+        width: 300,
+        resizable: false,
+        modal: true,
+        buttons: {
+            "Đóng": function () {
+                $(this).dialog("close");
+            }
+        }
+    });
+    $("#error-dialog-form-chat").dialog({
+        autoOpen: false,
+        height: "auto",
+        width: 300,
+        resizable: false,
+        modal: true,
+        buttons: {
+            "Nhờ hỗ trợ từ THƯ VIỆN PHÁP LUẬT": function () {
+                $(this).dialog("close");
+                $zopim.livechat.say('Xin chào, tôi không thể đăng nhập được');
+            }
+        }
+    });
+
+    $("#Timkiem-dialog-form_vb").dialog({
+        autoOpen: false,
+        height: "auto",
+        width: 300,
+        resizable: false,
+        modal: true,
+        buttons: {
+            "Đóng": function () {
+                $(this).dialog("close");
+            }
+        }
+    });
+
+    $("#TonTu-dialog-form").dialog({
+        autoOpen: false,
+        height: "auto",
+        width: 420,
+        resizable: false,
+        modal: true
+    });
+    function ShowTonTu() {
+        $("#TonTu-dialog-form").dialog("open");
+    };
+    function ShowErrorMsg(msg) {
+        $("#error-dialog-form").html(msg);
+        $("#error-dialog-form").dialog("open");
+    }
+    function checkLength(o, n, min, max) {
+        if (o.val().length > max || o.val().length < min) {
+            o.addClass("ui-state-error");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function checkRegexp(o, regexp, n) {
+        if (!(regexp.test(o.val()))) {
+            o.addClass("ui-state-error");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    $("#sendemail-dialog-form").dialog({
+        autoOpen: false,
+        height: "auto",
+        width: 300,
+        resizable: false,
+        modal: true,
+        buttons: {
+            "Chia sẻ": function () {
+                var bValid = true;
+                $("#smTitle").removeClass("ui-state-error");
+                $("#smEmail").removeClass("ui-state-error");
+                $("#smContent").removeClass("ui-state-error");
+                bValid = bValid && checkLength($("#smEmail"), "smEmail", 5, 100);
+                bValid = bValid && checkLength($("#smTitle"), "smTitle", 1, 500);
+
+                bValid = bValid && checkLength($("#smContent"), "smContent", 1, 1000);
+                bValid = bValid && checkRegexp($("#smEmail"), /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "eg. ui@jquery.com");
+                var params = $("#FrSendEmailDoc").serialize();
+                if (bValid) {
+                    $.ajax({ 'url': '/page/ajaxcontroler.aspx',
+                        'data': params + '&action=SendEmail',
+                        'type': 'POST',
+                        success: fnSendEmail,
+                        error: function (response) {
+                            alert("Có lỗi trong quá trình gửi dữ liệu:" + response.responseText)
+                        }
+                    });
+
+                }
+            },
+            "Thoát": function () {
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+            $("#smTitle").removeClass("ui-state-error");
+            $("#smEmail").removeClass("ui-state-error");
+            $("#smContent").removeClass("ui-state-error");
+        }
+    });
+    function fnSendEmail(response) {
+        if (response == "<ok>" || response == "") {
+            alert("Chia sẻ văn bản thành công.");
+            $("#sendemail-dialog-form").dialog("close");
+        }
+        else {
+            alert(response);
+        }
+    }
+    $(".lkSendEmail").click(function () {
+        $("#smLawID").val($(".smhLawID").val());
+        $("#smTitle").val($(".smhTitle").val());
+        $("#smContent").val($(".smhContent").val());
+        $("#sendemail-dialog-form").dialog("open");
+    });
+    $("#feedback-dialog-form").dialog({
+        autoOpen: false,
+        height: "auto",
+        width: 500,
+        resizable: false,
+        modal: true,
+        buttons: {
+            "Gửi": function () {
+                var bValid = true;
+                $("#fbName").removeClass("ui-state-error");
+                $("#fbEmail").removeClass("ui-state-error");
+                $("#fbContent").removeClass("ui-state-error");
+                bValid = bValid && checkLength($("#fbName"), "fbName", 5, 100);
+                bValid = bValid && checkLength($("#fbEmail"), "fbEmail", 5, 100);
+                bValid = bValid && checkLength($("#fbContent"), "fbContent", 1, 2000);
+                bValid = bValid && checkLength($("#fbPhone"), "fbPhone", 7, 20);
+                bValid = bValid && checkRegexp($("#fbEmail"), /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "eg. ui@jquery.com");
+                var params = $("#FrFeedBack").serialize();
+                if (bValid) {
+                    $.ajax({ 'url': 'https://thuvienphapluat.vn/page/ajaxcontroler.aspx',
+                        'data': params + '&action=FeedBack',
+                        'type': 'POST',
+                        success: fnCompleted,
+                        error: function (response) {
+                            alert("Có lỗi trong quá trình gửi dữ liệu:" + response.responseText)
+                        }
+                    });
+
+                }
+            },
+            "Thoát": function () {
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+            $("#fbName").removeClass("ui-state-error");
+            $("#fbEmail").removeClass("ui-state-error");
+            $("#fbContent").removeClass("ui-state-error");
+        }
+    });
+
+    $("#tvtt-dialog-form").dialog({
+        autoOpen: false,
+        height: "auto",
+        width: 550,
+        resizable: false,
+        modal: true,
+        buttons: {
+            "Thoát": function () {
+                $(this).dialog("close");
+            }
+        }
+    });
+
+    $("#hndl-dialog-form").dialog({
+        autoOpen: false,
+        height: "auto",
+        width: 500,
+        resizable: false,
+        modal: true,
+        buttons: {
+            "Gửi": function () {
+                var bValid = true;
+                $("#fbhndlName").removeClass("ui-state-error");
+                $("#fbhndlEmail").removeClass("ui-state-error");
+                $("#fbhndlContent").removeClass("ui-state-error");
+                bValid = bValid && checkLength($("#fbhndlName"), "fbhndlName", 5, 100);
+                bValid = bValid && checkLength($("#fbhndlEmail"), "fbhndlEmail", 5, 100);
+                bValid = bValid && checkLength($("#fbhndlContent"), "fbhndlContent", 1, 2000);
+                bValid = bValid && checkLength($("#fbhndlPhone"), "fbhndlPhone", 7, 20);
+                bValid = bValid && checkRegexp($("#fbhndlEmail"), /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "eg. ui@jquery.com");
+                var params = $("#FrHNDL").serialize();
+                if (bValid) {
+                    $.ajax({ 'url': 'https://thuvienphapluat.vn/page/ajaxcontroler.aspx',
+                        'data': params + '&action=FrHNDL',
+                        'type': 'POST',
+                        success: fnHNDLCompleted,
+                        error: function (response) {
+                            alert("Có lỗi trong quá trình gửi dữ liệu:" + response.responseText)
+                        }
+                    });
+
+                }
+            },
+            "Thoát": function () {
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+            $("#fbhndlName").removeClass("ui-state-error");
+            $("#fbhndlEmail").removeClass("ui-state-error");
+            $("#fbhndlContent").removeClass("ui-state-error");
+        }
+    });
+
+    function fnHNDLCompleted(response) {
+        if (response == "<ok>" || response == "") {
+            alert("Câu hỏi của bạn đã được gởi.\r\nLuật sư sẽ tiếp nhận và trả lời cho bạn trong thời gian nhanh nhất.\r\nCảm ơn bạn đã sử dụng dịch vụ của THƯ VIỆN PHÁP LUẬT.");
+            $("#fbhndlContent").val("");
+            $("#hndl-dialog-form").dialog("close");
+        }
+        else {
+            alert("Lỗi: " + response);
+        }
+    }
+
+    $("#SendFeedBack").click(function () {
+
+//        $("#feedback-dialog-form").dialog("open");
+        window.location = "/page/lienhe.aspx?type=gy";
+    });
+
+    $("#SendhndlLienHe").click(function () {
+
+        $("#tvtt-dialog-form").dialog("open");
+    });
+
+    $("#Sendhndl").click(function () {
+
+        $("#tvtt-dialog-form").dialog("close");
+        $("#hndl-dialog-form").dialog("open");
+    });
+
+    $(".SendFeedBack_vb").click(function () {
+        $("#fbContent").val("\nURL Văn bản Góp ý: " + window.location);
+        $("#feedback-dialog-form").dialog("open");
+
+    });
+
+    function fnCompleted(response) {
+        if (response == "<ok>" || response == "") {
+            alert("Cám ơn bạn đã gửi góp ý cho chúng tôi.");
+            $("#fbContent").val("");
+            $("#feedback-dialog-form").dialog("close");
+        }
+        else {
+            alert("Lỗi: " + response);
+        }
+    }
+    function fnCompleted_vb(response) {
+        if (response == "<ok>" || response == "") {
+            alert("Cám ơn bạn đã gửi góp ý cho chúng tôi.");
+            $("#fbContent_vb").val("");
+            $("#feedback-dialog-form_vb").dialog("close");
+        }
+        else {
+            alert("Lỗi: " + response);
+        }
+    }
+
+    //Change PassWord
+    $("#lkChangePassWord,#lkChangePassWord2").click(function () {
+        $("#changepass-dialog-form").dialog("open");
+    });
+    $("#lkChangePassWord2").click(function () {
+        $("#changepass-dialog-form").dialog("open");
+    });
+    $("#changepass-dialog-form").dialog({
+        autoOpen: false,
+        height: "auto",
+        width: 300,
+        resizable: false,
+        modal: true,
+        buttons: {
+            "Đổi mật khẩu": function () {
+                var bValid = true;
+                $("#cpUserName").removeClass("ui-state-error");
+                $("#cpOldPassWord").removeClass("ui-state-error");
+                $("#cpNewPassword2").removeClass("ui-state-error");
+                $("#cpNewPassword").removeClass("ui-state-error");
+                bValid = bValid && checkLength($("#cpUserName"), "cpUserName", 1, 50);
+                bValid = bValid && checkLength($("#fbEmail"), "fbEmail", 5, 100);
+                bValid = bValid && checkLength($("#cpOldPassWord"), "cpOldPassWord", 1, 20);
+                bValid = bValid && checkLength($("#cpNewPassword"), "cpNewPassword", 5, 20);
+                bValid = bValid && checkLength($("#cpNewPassword2"), "cpNewPassword", 5, 20);
+                var params = $("#FrChangePassword").serialize();
+                if (bValid) {
+                    if ($("#cpNewPassword").val() != $("#cpNewPassword2").val()) {
+                        $("#cpNewPassword").addClass("ui-state-error");
+                        $("#cpNewPassword2").addClass("ui-state-error");
+                    }
+                    else {
+                        $.ajax({ 'url': '/page/ajaxcontroler.aspx',
+                            'data': params + '&action=ChangePassWord',
+                            'type': 'POST',
+                            success: fnChanged,
+                            error: function (response) {
+                                alert("Có lỗi trong quá trình gửi dữ liệu:" + response.responseText)
+                            }
+                        });
+                    }
+
+                }
+            },
+            "Thoát": function () {
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+            $("#cpUserName").removeClass("ui-state-error");
+            $("#cpOldPassWord").removeClass("ui-state-error");
+            $("#cpNewPassword2").removeClass("ui-state-error");
+            $("#cpNewPassword").removeClass("ui-state-error");
+        }
+    });
+    function fnChanged(response) {
+        if (response == "<ok>" || response == "") {
+            alert("Đổi mật khẩu thành công.");
+            $("#cpOldPassWord").val("");
+            $("#cpNewPassword").val("");
+            $("#cpNewPassword2").val("");
+            $("#changepass-dialog-form").dialog("close");
+        }
+        else {
+            alert("Lỗi: " + response);
+        }
+    }
+
+
+    //Foget PassWord
+    $("#lkFogetPassWord").click(function () {
+        $("#fogetpass-dialog-form").dialog("open");
+    });
+    $("#fogetpass-dialog-form").dialog({
+        autoOpen: false,
+        height: "auto",
+        width: 300,
+        resizable: false,
+        modal: true,
+        buttons: {
+            "Tiếp tục": function () {
+                var bValid = true;
+                $("#cpEmail").removeClass("ui-state-error");
+                bValid = bValid && checkLength($("#cpEmail"), "cpEmail", 5, 100);
+
+                var params = $("#FrFogetPassword").serialize();
+                if (bValid) {
+
+                    $.ajax({ 'url': '/page/ajaxcontroler.aspx',
+                        'data': params + '&action=FogetPassWord',
+                        'type': 'POST',
+                        success: fnSend,
+                        error: function (response) {
+                            alert("Quá trình gửi email xác nhận gặp sự cố. Mời bạn thử lại trong giây lát!")
+                        }
+                    });
+
+                }
+            },
+            "Thoát": function () {
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+            $("#cpEmail").removeClass("ui-state-error");
+        }
+    });
+
+
+    function fnSend(response) {
+        if (response == "<ok>" || response == "") {
+            alert("Xác nhận quên mật khẩu đã được gửi!\r\n Bạn hãy kiểm tra hộp thư và làm theo hướng dẫn.");
+            $("#cpEmail").val("");
+            $("#fogetpass-dialog-form").dialog("close");
+        }
+        else {
+            alert(response);
+        }
+    }
+
+
+
+    $("#YeuCauTCVN-dialog-form").dialog({
+        autoOpen: false,
+        height: "auto",
+        width: 300,
+        resizable: false,
+        modal: true,
+        buttons: {
+            "Gởi yêu cầu": function () {
+                var bValid = true;
+                $("#fbEmailYC").removeClass("ui-state-error");
+                $("#cpYeuCau").removeClass("ui-state-error");
+
+                bValid = bValid && checkLength($("#fbEmailYC"), "fbEmailYC", 5, 100);
+                bValid = bValid && checkLength($("#cpYeuCau"), "cpYeuCau", 1, 2000);
+
+                bValid = bValid && checkRegexp($("#fbEmailYC"), /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "eg. ui@jquery.com");
+
+
+
+                var params = $("#FrYeuCauTCVN").serialize();
+                if (bValid) {
+
+                    $.ajax({ 'url': '/page/ajaxcontroler.aspx',
+                        'data': params + '&action=YeuCauTCVN',
+                        'type': 'POST',
+                        success: fnYeuCauTCVN,
+                        error: function (response) {
+                            alert("Quá trình gởi yêu cầu gặp sự cố. Mời bạn thử lại trong giây lát!")
+                        }
+                    });
+
+                }
+            },
+            "Thoát": function () {
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+            $("#cpYeuCau").removeClass("ui-state-error");
+            $("#fbEmailYC").removeClass("ui-state-error");
+        }
+    });
+
+
+
+    function fnYeuCauTCVN(response) {
+        if (response == "<ok>" || response == "") {
+            alert("Gởi yêu cầu thành công.");
+            $("#cpYeuCau").val("");
+            $("#YeuCauTCVN-dialog-form").dialog("close");
+        }
+        else {
+            alert(response);
+        }
+    }
+
+    $("#NotifiLawStatus-dialog-form").dialog({
+        autoOpen: false,
+        height: "auto",
+        width: 400,
+        resizable: false,
+        modal: true,
+        buttons: {
+            "Gởi yêu cầu": function () {
+                var bValid = true;
+                $("#fbEmailNT").removeClass("ui-state-error");
+
+                bValid = bValid && checkLength($("#fbEmailNT"), "fbEmailNT", 5, 1000);
+
+
+
+                var params = $("#FrNotifiLawStatus").serialize();
+                if (bValid) {
+
+                    $.ajax({ 'url': '/page/ajaxcontroler.aspx',
+                        'data': params + '&action=NotifiLawStatus',
+                        'type': 'POST',
+                        success: function (response) {
+                            alert("Đã gởi yêu cầu");
+                            $("#NotifiLawStatus-dialog-form").dialog("close");
+                        },
+                        error: function (response) {
+                            alert("Quá trình gởi yêu cầu gặp sự cố. Mời bạn thử lại trong giây lát!")
+                        }
+                    });
+
+                }
+            },
+            "Thoát": function () {
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+            $("#fbEmailYC").removeClass("ui-state-error");
+        }
+    });
+
+    $("#Note-dialog-form").dialog({
+        autoOpen: false,
+        height: "auto",
+        width: 500,
+        resizable: false,
+        modal: true,
+        buttons: {
+            "Cập nhật": function () {
+                var bValid = true;
+                $("#fbNote").removeClass("ui-state-error");
+
+
+
+
+
+                var params = $("#FrNote").serialize();
+                if (bValid) {
+
+                    $.ajax({ 'url': '/page/ajaxcontroler.aspx',
+                        'data': params + '&action=LawNote',
+                        'type': 'POST',
+                        success: function (response) {
+                            alert("Đã cập nhật");
+                            $("#Note-dialog-form").dialog("close");
+                        },
+                        error: function (response) {
+                            alert("Quá trình gởi yêu cầu gặp sự cố. Mời bạn thử lại trong giây lát!")
+                        }
+                    });
+
+                }
+            },
+            "Thoát": function () {
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+            $("#fbNote").removeClass("ui-state-error");
+        }
+    });
+});
+
+
+

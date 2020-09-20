@@ -1,0 +1,23 @@
+maxn smin(maxa x, maxn l, maxn r) {
+	if ((l > r) || (l < 0) || (r < 0))  return -1;
+	do {
+		maxn m = (l + r) / 2;
+		if (a[m] < x) l = m + 1;
+		else r = m;
+	} while (l < r);
+	if (a[r] == x) return r;
+	if (a[l] == x) return l;
+	return -1;
+}
+
+maxn smax(maxa x, maxn l, maxn r) {
+	if ((l > r) || (l < 0) || (r < 0))  return -1;
+	do {
+		maxn m = (l + r + 1) / 2;
+		if (a[m] > x) r = m - 1;
+		else l = m;
+	} while (l < r);
+	if (a[r] == x) return r;
+	if (a[l] == x) return l;
+	return -1;
+}

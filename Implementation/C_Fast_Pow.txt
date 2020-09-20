@@ -1,0 +1,8 @@
+maxa pow(maxa a, maxa P, maxa MOD) {
+	maxa re = 1, x = a;
+	for (maxa p = P; p != 0; p >>= 1) {
+		if (p & 1) re = (re * x) % MOD;
+		x = (x * x) % MOD;
+	}
+	return (re % MOD);
+}

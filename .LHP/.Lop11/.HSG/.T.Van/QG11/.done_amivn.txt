@@ -1,0 +1,45 @@
+
+PROBLEM: So ban be
+
+Hai so nguyen duoc goi la so ban be neu tong cac uoc so thuc su (ke ca 1) cua so nay
+ bang so kia va nguoc lai. 
+Chang han, so 220 co cac uoc so la
+
+1 2 4 5 10 11 20 22 44 55 110
+
+Tong cac uoc so tren la 284. 
+
+So 284 co cac uoc so la:
+
+1 2 4 71 142
+
+Tong cac uoc so tren la 220.
+
+Vay 220 va 284 la hai so ban be.
+
+Bai toan: tim tat ca cac so ban be trong mot mien cho truoc
+Ten chuong trinh: ami
+
+INPUT:
+
+Cho trong tap tin van ban ami.inp, gom 2 so nguyen L va H tren cung mot dong,
+ cach nhau 1 khoang trang (1 <= L <= H <= 900000).
+
+OUTPUT:
+
+Cho trong tap tin van ban ami.out, 
+gom 0 hay nhieu dong, moi dong chua 1 cap so nguyen (so nho truoc, so lon sau)
+ la so ban be trong khoang L..H. 
+Cac cap so duoc sap thu thu theo so dung truoc
+
+Vi du:
+ami.inp
+
+200 300
+
+
+ami.out
+
+220 284
+
+  

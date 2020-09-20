@@ -1,0 +1,13 @@
+// boolean check
+
+function s_range(l,r: maxr): maxr;
+var m: maxr;
+begin
+  m:= (l + r) / 2;
+  while (l <> m) and (r <> m) do begin
+    if check(m) = <data> then l:=m
+    else r:=m;
+    m:= (l + r) / 2;
+  end;
+  exit(m);
+end;

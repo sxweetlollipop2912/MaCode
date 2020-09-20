@@ -1,0 +1,9 @@
+void Output() {
+	int ii;
+	for (ii = max - 1; ii >= 0; ii--) if (a[ii] != 0) break;
+	std::cout << a[ii];
+	for (int i = ii - 1; i >= 0; i--) {
+		if (a[i] < 10) std::cout << 0; // 0<num>
+		std::cout << a[i];
+	}
+}

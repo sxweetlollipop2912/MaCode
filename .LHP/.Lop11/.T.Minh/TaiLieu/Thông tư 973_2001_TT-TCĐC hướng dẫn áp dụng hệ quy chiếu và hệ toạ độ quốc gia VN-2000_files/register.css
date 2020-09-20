@@ -1,0 +1,50 @@
+﻿#regChooseService
+{
+            font-family: Arial;
+            font-size: 10px;
+            text-align: center;
+            margin: 0px;
+            padding: 0px 0px 0px 0px;
+            width:100%;
+            
+}
+#regChooseService td
+{
+            height: 40px;
+            background: #ffffff url(../images/newaccount/bgservice.jpg);
+            background-repeat: no-repeat;
+            background-position: left;
+            width:100%;
+            padding:5px;
+            text-align:left;
+            vertical-align:middle;
+}
+#regChooseService td span
+{
+            font-size:12px;
+            padding-left:50px;
+            
+}
+#regChooseService td span strong
+{
+            color:Red;
+            
+}
+#regChooseService td.activesv
+{
+            height: 40px;
+            background: #ffffff url(../images/newaccount/bgservice-active.jpg);
+            background-repeat: no-repeat;
+            background-position: left;
+            width:100%;
+            padding:5px;
+}
+#regChooseService td:hover
+{
+            background: #ffffff url(../images/newaccount/bgservice-active.jpg);
+            background-repeat: no-repeat;
+            background-position: left;
+            cursor:pointer;
+}
+#reg_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+			#reg_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}

@@ -1,0 +1,11 @@
+std::bitset<maxE> p;
+void Era() {
+	p.set();
+	p[0] = p[1] = 0;
+
+	for (maxa i = 2; i <= E; i++) {
+		if (!p[i]) continue;
+		for (maxa j = i * i; j <= E; j += i) p[j] = 0;
+		prime.push_back(i);
+	}
+}

@@ -1,0 +1,3 @@
+open.kattis.com
+uvaOJ
+tiny.cc/Summer2019-G11 (link sach)

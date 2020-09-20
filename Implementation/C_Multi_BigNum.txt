@@ -1,0 +1,13 @@
+// a[3][maxn]
+void Multi(int re, int ii, int jj) {
+	for (int i = 0; i < max; i++)
+		for (int j = 0; j < max; j++) {
+			a[re][i + j] += a[ii][i] * a[jj][j];
+			a[re][i + j + 1] += a[re][i + j] / mod;
+			a[re][i + j] %= mod;
+		}
+	/*for (int i = max; i < maxn - 1; i++) {  // maxn = max * 2
+		a[re][i + 1] += a[re][i] / mod;
+		a[re][i] %= mod;
+	}*/
+}

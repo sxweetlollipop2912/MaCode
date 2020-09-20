@@ -1,0 +1,9 @@
+maxr s_range(maxr l, maxr r) {
+	maxr m = (l + r) / 2;
+	while (l != m && r != m) {
+		if (<bool>) l = m;
+		else r = m;
+		m = (l + r) / 2;
+	}
+	return m;
+}

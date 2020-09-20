@@ -1,0 +1,21 @@
+//k là snt, n là gt
+int Legendre(int k, int n) {
+	int re = 0, p = k;
+	while (n / p > 0) {
+		re += n / p;
+		p *= k;
+	}
+	return re;
+}
+
+
+function Legendre(k,n: maxn): maxn;
+var p: int64;
+begin
+  Legendre:=0;
+  p:=k;
+  while (n div p > 0) do begin
+    re:=re+(n div p);
+    p:=p*k;
+  end;
+end;

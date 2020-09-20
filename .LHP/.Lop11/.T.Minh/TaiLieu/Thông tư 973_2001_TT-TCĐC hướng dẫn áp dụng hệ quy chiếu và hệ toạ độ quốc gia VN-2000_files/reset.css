@@ -1,0 +1,11 @@
+div, p, ul, li, a, h1, h2, h3, h4, h6, form, label, input{
+	margin:0px;
+	padding-left: 0px;
+	padding-right: 0;
+	}
+img {
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}

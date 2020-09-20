@@ -1,0 +1,19 @@
+﻿#cmDiagram .ghd { background-color: #F8F8F8; border: solid 1px #9DA9B9; font-weight: bold; padding: 2px; cursor: pointer; }
+#cmDiagram .ghda { background-color: #E2E2E2; }
+#cmDiagram .ghdm { background-color: #FFEFD4; }
+#cmDiagram .ghd b, #cmDiagram .gha b { color: #E42017; }
+#cmDiagram .ct { padding: 2px; border: solid 1px #9DA9B9; border-top: none; }
+#cmDiagram .left { width: 210px; }
+#cmDiagram .right { width: 520px; padding-left: 10px; }
+#cmDiagram .rl { width: 294px; }
+#cmDiagram .rr { width: 210px; padding-left: 10px; }
+#cmDiagram .tt { background-color: #FFFBF4; font-weight: bold; }
+#cmDiagram .attbt { border-top: solid 1px #FFB780; height: 0px; overflow: hidden; }
+#cmDiagram .att { border: solid 1px #FFB780; border-bottom: none; background-color: #FBF3EE; }
+#cmDiagram .hd { width: 110px; padding: 2px; font-weight: bold; }
+#cmDiagram .ds { background-color: #ffffff; width: 167px; border-left: solid 1px #FFB780; padding: 2px; }
+#cmDiagram .ghdmbdr { border-color: #FFA25B; }
+
+#cmDiagram .lsp { border-bottom: solid 1px #9DA9B9; overflow: hidden; height: 2px; margin-bottom: 2px; }
+#cmDiagram a, #cmDiagram a:visited { color: #000000; }
+#cmDiagram a:hover, #cmDiagram a:visited:hover { color: #C92013; cursor: pointer; }

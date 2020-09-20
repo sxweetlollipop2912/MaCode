@@ -1,0 +1,9 @@
+function s_range(l,r: maxr): maxr;
+var m: maxr;
+begin
+  repeat
+    m:=(l+r)/2;
+    if <bool> then r:=m else l:=m;
+  until abs(l-r) < epsilon;
+  exit(m);
+end;

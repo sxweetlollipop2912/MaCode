@@ -1,0 +1,291 @@
+﻿function CallLogin() {
+    $("#modalLogin").modal('show');
+}
+
+function InitialiseFacebook(appId) {
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '277742252707255', // App ID
+            status: true, // check login status
+            cookie: true, // enable cookies to allow the server to access the session
+            xfbml: true  // parse XFBML
+        });
+
+        FB.getLoginStatus(function (response) {
+            if (response.status === 'connected') {
+            }
+            else if (response.status === 'not_authorized') {
+            }
+            else {
+            }
+
+        });
+    };
+
+    (function (d) {
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement('script');
+        js.id = id;
+        js.async = true;
+        js.src = "//connect.facebook.net/vi_VN/all.js";
+        ref.parentNode.insertBefore(js, ref);
+    } (document));
+}
+
+function fb_login() {
+    FB.login(function (response) {
+
+        if (response.authResponse) {
+            access_token = response.authResponse.accessToken; //get access token
+            user_id = response.authResponse.userID; //get FB UID
+
+            FB.api('/me?fields=name,email', function (response) {
+
+
+                var credentials = { action: "LoginWhitOpenID", UserName: response.username, FullName: response.name, Email: response.email, Avata: 'https://graph.facebook.com/' + response.username + '/picture', OpenID: user_id, rt_action: "[" + window.location.href + "]", AppType: "FB" };
+                console.log(credentials);
+                $.ajax({
+                    url: "/page/ajaxcontroler.aspx",
+                    type: "POST",
+                    data: credentials,
+                    error: function (response) {
+                        alert("Lỗi kết nối với tài khoản Facebook của bạn, vui lòng thử lại.");
+                    },
+                    success: function (response1) {
+                        console.log(response1);
+
+                        if (response1 == "Reload") {
+                            location.reload();
+                        }
+                        else {
+                            $(".r_txtNameUser").val(response.name);
+
+                            $(".r_txtUser").val(response.email);
+                            $(".r_txtPass").val(response.email);
+                            $(".r_txtEmail").val(response.email);
+                            $(".r_AppType").val("FB");
+                            $(".r_txtPhone").focus();
+                            $(".lgOp").hide();
+                            $(".ipPhone").show();
+                            $(".trLogin").hide();
+                            $(".btnRegiter").val("Hoàn tất");
+                        }
+                    }
+                });
+            });
+
+        } else {
+            //user hit cancel button
+            console.log('User cancelled login or did not fully authorize.');
+
+        }
+    }, {
+        scope: 'email,publish_stream'
+    });
+}
+
+function fb_login2() {
+    FB.login(function (response) {
+
+        if (response.authResponse) {
+            access_token = response.authResponse.accessToken; //get access token
+            user_id = response.authResponse.userID; //get FB UID
+
+            FB.api('/me?fields=name,email', function (response) {
+
+
+                var credentials = { action: "LoginWhitOpenID", UserName: response.username, FullName: response.name, Email: response.email, Avata: 'https://graph.facebook.com/' + response.username + '/picture', OpenID: user_id, rt_action: "[" + window.location.href + "]", AppType: "FB" };
+                console.log(credentials);
+                $.ajax({
+                    url: "/page/ajaxcontroler.aspx",
+                    type: "POST",
+                    data: credentials,
+                    error: function (response) {
+                        alert("Lỗi kết nối với tài khoản Facebook của bạn, vui lòng thử lại.");
+                    },
+                    success: function (response1) {
+                        console.log(response1);
+
+                        if (response1 == "Reload") {
+                            location.reload();
+                        }
+                        else {
+
+                            opentLogin();
+                            $(".r_txtNameUser").val(response.name);
+
+                            $(".r_txtUser").val(response.email);
+                            $(".r_txtPass").val(response.email);
+                            $(".r_txtEmail").val(response.email);
+                            $(".r_AppType").val("FB");
+                            $(".r_txtPhone").focus();
+                            $(".lgOp").hide();
+                            $(".ipPhone").show();
+                            $(".trLogin").hide();
+                            $(".btnRegiter").val("Hoàn tất");
+                        }
+                    }
+                });
+            });
+
+        } else {
+            //user hit cancel button
+            console.log('User cancelled login or did not fully authorize.');
+
+        }
+    }, {
+        scope: 'email,publish_stream'
+    });
+}
+
+
+function fb_logout() {
+    FB.logout(function myfunction() {
+        location.reload();
+    });
+}
+
+function wallpost(message, title, link, desc, picture, name, uid) {
+    var kime = '/' + uid + '/feed';
+    FB.api(kime, 'post', {
+        message: message,
+        name: name,
+        link: link,
+        picture: picture,
+        caption: title,
+        action_links: [{
+            text: title,
+            href: link
+        }],
+        description: desc
+    }, function (response) {
+        if (!response || response.error) {
+            console.log('Post error');
+        } else {
+            console.log('Post success');
+        }
+    });
+}
+
+function sharex() {
+    wallpost(' ', " ", 'http://www.abc.com', 'www.abc.com', 'http://www.abc.com/Content/img/logo.jpg', ' ', 'me');
+}
+
+
+
+function onSignIn(googleUser) {
+    google_logout();
+    var profile = googleUser.getBasicProfile();
+
+
+
+
+    var credentials = { action: "LoginWhitOpenID", UserName: profile.getEmail(), FullName: profile.getName(), Email: profile.getEmail(), Avata: profile.getImageUrl(), OpenID: profile.getId(), rt_action: "[" + window.location.href + "]", AppType: "GG" };
+    console.log(credentials);
+
+
+    $.ajax({
+        url: "/page/ajaxcontroler.aspx",
+        type: "POST",
+        data: credentials,
+        error: function (response) {
+            alert("Lỗi kết nối với tài khoản Google của bạn, vui lòng thử lại.");
+        },
+        success: function (response) {
+            google_logout();
+
+            console.log(response);
+            if (response == "Reload") {
+                location.reload();
+            }
+
+            else {
+
+                $(".r_txtNameUser").val(profile.getName());
+                $(".r_txtUser").val(profile.getEmail());
+                $(".r_txtPass").val(profile.getEmail());
+                $(".r_txtEmail").val(profile.getEmail());
+                $(".r_AppType").val("GG");
+                $(".r_txtPhone").focus();
+                $(".lgOp").hide();
+                $(".ipPhone").show();
+                $(".trLogin").hide();
+                $(".btnRegiter").val("Hoàn tất");
+            }
+        }
+    });
+}
+function onSignIn2(googleUser) {
+    google_logout();
+    var profile = googleUser.getBasicProfile();
+
+
+
+
+    var credentials = { action: "LoginWhitOpenID", UserName: profile.getEmail(), FullName: profile.getName(), Email: profile.getEmail(), Avata: profile.getImageUrl(), OpenID: profile.getId(), rt_action: "[" + window.location.href + "]", AppType: "GG" };
+    console.log(credentials);
+
+
+    $.ajax({
+        url: "/page/ajaxcontroler.aspx",
+        type: "POST",
+        data: credentials,
+        error: function (response) {
+            alert("Lỗi kết nối với tài khoản Google của bạn, vui lòng thử lại.");
+        },
+        success: function (response) {
+            google_logout();
+
+            console.log(response);
+            if (response == "Reload") {
+                location.reload();
+            }
+
+            else {
+
+
+                opentLogin();
+
+                $(".r_txtNameUser").val(profile.getName());
+                $(".r_txtUser").val(profile.getEmail());
+                $(".r_txtPass").val(profile.getEmail());
+                $(".r_txtEmail").val(profile.getEmail());
+                $(".r_AppType").val("GG");
+                $(".r_txtPhone").focus();
+                $(".lgOp").hide();
+                $(".ipPhone").show();
+                $(".trLogin").hide();
+                $(".btnRegiter").val("Hoàn tất");
+
+
+            }
+        }
+    });
+}
+
+function logout(val) {
+    $.ajax({
+        url: "/User/LogOut",
+        type: "POST",
+        error: function (response) {
+            alert("Lỗi kết nối, vui lòng thử lại.");
+        },
+        success: function (response) {
+            if (val == "5")
+                google_logout();
+            location.reload();
+        }
+    });
+
+}
+
+function google_logout() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        console.log('User signed out.');
+    });
+}

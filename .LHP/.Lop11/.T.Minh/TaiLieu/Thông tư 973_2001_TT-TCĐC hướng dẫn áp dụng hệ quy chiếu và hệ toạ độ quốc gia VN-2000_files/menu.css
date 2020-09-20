@@ -1,0 +1,74 @@
+#top_menu {
+	font-size:12px;
+	line-height:normal; /*margin between menu and rest of page*/
+	float: right;
+	margin-right:1px;
+	width:650px;
+	
+}
+#top_menu ul {
+	margin:0;
+	list-style:none;
+	float: right;
+}
+.liMenu
+{
+	float:left;
+	background-image: url(../images/bg_menu.gif);
+	background-repeat: repeat-x;	
+	height:26px;
+    padding:12px 8px 0 8px;
+    
+}
+.liLine
+{
+    float:left;
+    width:1px;
+    height:38px;
+    background-image: url(../images/line_menu.gif);
+	background-repeat: no-repeat;
+} 
+.liMenu:hover
+{
+    background:#F7B33D;
+    background-image: url(../images/bg_over.gif);
+}
+
+.liMenu a
+{
+    color:#fff;
+    text-decoration:none;
+    margin-left:5px;
+    font-weight:bold;
+}
+.sub_menu {
+	background-color: #FAC42A;
+	border: 1px solid #FFDFA3;
+	width: 219px;
+	position: absolute;
+	display: none;
+	top: 27px;
+	left:709px;
+	z-index: 300;
+	-moz-border-radius:5px;
+	-moz-box-shadow: 2px 2px 3px #c6cdd0;
+}
+.sub_menu div
+{
+    padding:3px 0 3px 0;
+    background:#E99110;
+    margin-bottom:1px;
+}
+.sub_menu div:hover
+{
+    background:#F7B33D;
+}
+.sub_menu a
+{
+    padding-left:4px;
+}
+.ImgThum80 img
+{
+    width:8px;
+    border:0px;
+    }

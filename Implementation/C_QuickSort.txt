@@ -1,0 +1,14 @@
+void Qsort(maxn l, maxn r) {
+	maxa x = a[(l + r) / 2];
+	maxn i = l, j = r;
+	while (a[i] < x) i++;
+	while (a[j] > x) j--;
+	if (i <= j) {
+		x = a[i];
+		a[i] = a[j];
+		a[j] = x;
+		i++; j--;
+	}
+	if (i < r) Qsort(i, r);
+	if (l < j) Qsort(l, j);
+}

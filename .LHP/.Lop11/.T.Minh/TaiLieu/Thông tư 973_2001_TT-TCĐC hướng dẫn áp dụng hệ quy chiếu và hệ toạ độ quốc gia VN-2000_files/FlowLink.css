@@ -1,0 +1,97 @@
+﻿        #link-style-parent
+        {
+            font-family: Arial;
+            font-size: 10px;
+            text-align: center;
+            margin: 0px;
+            padding: 0px 0px 0px 0px;
+        }
+        #link-style-parent td
+        {
+            vertical-align: top;
+        }
+        #link-style-parent td.centerlk
+        {
+            background: #ffffff url(../images/FlowLink/center.jpg);
+            background-repeat: no-repeat;
+            background-position: top;
+            width:295px;
+        }
+        #link-style-parent td.centerlk-active
+        {
+            background: #ffffff url(../images/FlowLink/center-active.jpg);
+            background-repeat: no-repeat;
+            background-position: top;
+            width:295px;
+        }
+        #link-style-parent td.styleen
+        {
+            height: 39px;
+            background: #ffffff url(../images/FlowLink/bgen.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        #link-style-parent td.styleen:hover
+        {
+            background: #ffffff url(../images/FlowLink/bgen-active.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+        }
+        #link-style
+        {
+            width: 207px;
+            margin: 0px;
+            padding: 0px 0px 0px 0px;
+        }
+        #link-style td
+        {
+            background: #ffffff url(../images/FlowLink/bg.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0px;
+            padding: 0px 0px 0px 0px;
+            width: 207px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        #link-style td:hover
+        {
+            background: #ffffff url(../images/FlowLink/bg-active.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+        }
+        #link-style-right
+        {
+            width: 207px;
+            margin: 0px;
+            padding: 0px 0px 0px 0px;
+        }
+        #link-style-right td
+        {
+            background: #ffffff url(../images/FlowLink/bg.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0px;
+            padding: 0px 0px 0px 0px;
+            width: 207px;
+            vertical-align: middle;
+        }
+        #link-style-right td:hover
+        {
+            background: #ffffff url(../images/FlowLink/bg-active.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+        }
+        .lktitle
+        {
+            font-weight: bold;
+            color: Olive;
+        }
+        .lktitleEN
+        {
+            font-weight: bold;
+            color: Red;
+        }

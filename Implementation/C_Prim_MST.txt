@@ -1,0 +1,32 @@
+class cmp {
+public:
+    bool operator() (const pq_t &p1, const pq_t &p2) {
+        return p1.cost < p2.cost;
+    }
+};
+std::priority_queue <pq_t, std::vector <pq_t>, cmp > pq;
+
+
+void Prim() {
+    pq = std::priority_queue <pq_t, std::vector <pq_t>, cmp >();
+    std::fill(done, done + n, 0);
+    std::fill(mn, mn + n, -1);
+
+    mn[0] = 0;
+    pq.push(pq_t(0, mn[0]));
+
+    for (maxn i = 0; i < n; i++) {
+        while (done[pq.top().V]) pq.pop();
+        maxn u = pq.top().V; 
+        done[u] = 1;
+        pq.pop();
+
+        for (maxn j = 0; j < ad[u].size(); j++) {
+            maxn v = ad[u][j].V;
+            maxa c = ad[u][j].cost;
+            if (done[v] || mn[v] >= c) continue;
+            mn[v] = c;
+            pq.push(pq_t(v, mn[v]));
+        }
+    }
+}
