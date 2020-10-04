@@ -28,15 +28,15 @@ void Process() {
         for (maxn i = n - 1; i > 2; i -= 2)
             res += v[i] + x;
         if (n % 2 != 0)
-            res += v[1] + v[0] + v[2];
+            res += v[1] + v[0] + v[2] - v[1];
     }
-    std::cout << res << '\n';
+    std::cout << "kq " << res << '\n';
 }
 
 
 int main() {
-    freopen("quacau.inp", "r", stdin);
-    freopen("quacau.out", "w", stdout);
+    //freopen("quacau.inp", "r", stdin);
+    //freopen("quacau.out", "w", stdout);
 
     std::ios_base::sync_with_stdio(0);
     std::cin.tie(0);
