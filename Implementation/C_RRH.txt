@@ -1,0 +1,8 @@
+map<int,int> Num;
+void Roi_rac_hoa()
+{
+	int Cnt = 0;
+	for(int i=1; i<=n; ++i) Num[a[i]] = 0;
+	for(auto &x: Num) x.second = ++Cnt;
+	for(int i=1; i<=n; ++i) a[i] = Num[a[i]];
+}

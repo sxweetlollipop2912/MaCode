@@ -1,4 +1,4 @@
-// Undone
+// Done
 #include <iostream>
 #include <cstdio>
 #include <algorithm>
@@ -19,12 +19,16 @@ std::deque <maxn> dq;
 std::multiset <maxa> set;
 
 
-void Prepare() {
+bool Prepare() {
     std::cin >> n >> M;
-    for (maxn i = 1; i <= n; i++) std::cin >> a[i];
+    for (maxn i = 1; i <= n; i++) {
+        std::cin >> a[i];
+        if (a[i] > M) return 0;
+    }
 
     sum[0] = 0, sum[1] = a[1];
     for (maxn i = 2; i <= n; i++) sum[i] = sum[i - 1] + a[i];
+    return 1;
 }
 
 
@@ -37,15 +41,15 @@ void Process() {
         while (Sum(j, i) > M) ++j;
 
         while (!dq.empty() && a[dq.front()] <= a[i]) {
-            set.erase(fm[dq.front()]);
+            set.erase(set.find(fm[dq.front()]));
             dq.pop_front();
         }
         while (!dq.empty() && dq.back() < j) {
-            set.erase(fm[dq.back()]);
+            set.erase(set.find(fm[dq.back()]));
             dq.pop_back();
         }
         if (!dq.empty() && fm[dq.back()] != a[dq.back()] + f[j - 1]) {
-            set.erase(fm[dq.back()]);
+            set.erase(set.find(fm[dq.back()]));
             fm[dq.back()] = a[dq.back()] + f[j - 1];
             set.insert(fm[dq.back()]);
         }
@@ -55,7 +59,6 @@ void Process() {
         fm[i] = f[i] = a[i] + f[jj - 1];
         if (!set.empty()) f[i] = std::min(f[i], *set.begin());
 
-        //std::cout << dq.size() << ' ' << set.size() << ' ' << f[i] << ' ' << fm[i] << '\n';
         dq.push_front(i); set.insert(fm[i]);
     }
 
@@ -63,12 +66,12 @@ void Process() {
 }
 
 int main() {
-    //freopen("main.inp", "r", stdin);
+    freopen("main.inp", "r", stdin);
     //freopen("main.out", "w", stdout);
 
     std::ios_base::sync_with_stdio(0);
     std::cin.tie(0);
 
-    Prepare();
-    Process();
+    if (Prepare()) Process();
+    else std::cout << "-1";
 }
