@@ -22,6 +22,7 @@ void Init() {
 	tour.clear();
 }
 
+
 void Prepare() {
 	std::cin >> n;
 
