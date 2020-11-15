@@ -31,10 +31,6 @@ maxa Count(const maxa a[], const maxn n) {
 
     maxa re = 0;
     for(maxn i = 0; i < n; i++) re += std::min(lmx1[i], rmx1[i]) - a[i];
-
-    //for(maxn i = 0; i < n; i++) std::cout << a[i] << ' ';
-    //std::cout << '\n' << re << '\n';
-
     return re;
 }
 
@@ -60,8 +56,6 @@ void Process() {
 
 
 int main() {
-    //freopen("J.inp", "r", stdin);
-
     Prepare();
     Process();
 }

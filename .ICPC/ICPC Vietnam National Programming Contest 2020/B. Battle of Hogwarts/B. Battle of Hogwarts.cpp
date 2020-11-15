@@ -78,8 +78,6 @@ maxn Process() {
 
 
 int main() {
-    //freopen("B.inp", "r", stdin);
-
     std::ios_base::sync_with_stdio(0);
     std::cin.tie(0);
 

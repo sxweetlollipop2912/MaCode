@@ -60,13 +60,11 @@ maxa pow(const maxa a, maxa p) {
 maxa P(const maxn n, const maxn k) {
     if (n < k) return 0;
     maxa re = ((f[n] * pow(f[n - k], MOD - 2)) % MOD) % MOD;
-    //std::cout << "C " << n << ' ' << k << ' ' << re << '\n';
     return re;
 }
 
 
 maxa Count(const str &s) {
-    //std::cout << s << '\n';
     if (s.size() != n) return 0;
     for(maxn i = 0; i < n; i++) if (!cnt[num(s[i])][w[i]]) return 0;
     set.clear();
@@ -92,15 +90,12 @@ void Process() {
     res = 0;
     for(maxn i = 0; i < ns; i++) {
         res = (res + Count(s[i])) % MOD;
-        //std::cout << s[i] << ' ' << res << '\n';
     }
     std::cout << res << '\n';
 }
 
 
 int main() {
-    //freopen("H.inp","r",stdin);
-
     std::ios_base::sync_with_stdio(0);
     std::cin.tie(0);
 
