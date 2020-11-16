@@ -40,7 +40,6 @@ void DFS_IN(const maxn u) {
         DFS_IN(v);
         for(maxa p = 0; p < P; p++) fin[u][next(p)] += fin[v][p];
     }
-    //std::cout << "IN " << u << ' ' << fin[u][0] << ' ' << fin[u][1] << '\n';
 }
 
 
@@ -50,9 +49,6 @@ void DFS_OUT(const maxn u) {
         for(maxn p = 0; p < P; p++) fout[u][next(p)] += fin[par[u]][p];
         for(maxn p = 0; p < P; p++) fout[u][next(next(p))] -= fin[u][p];
     }
-
-    //std::cout << "OUT " << u << ' ' << fout[u][0] << ' ' << fout[u][1] << '\n';
-
 
     for(maxn i = 0; i < ad[u].size(); i++) {
         maxn v = ad[u][i];
