@@ -28,11 +28,10 @@ void Prepare() {
 
 
 maxr Try(const maxb dl, const maxb dr, const maxb ex, const maxb x2, const maxb x1, const maxn i) {
-	//std::cout << dl << ' ' << dr << ' ' << ex << ' ' << x2 << ' ' << x1 << ' ' << i << ' ' << a[i] << '\n';
 	if (i == n) return 1;
 
 	maxr re = 0;
-	maxb b = ~(dl | dr | ex | (x2 << 1) | (x2 >> 1) | (x1 << 2) | (x1 >> 2) | (~a[i])); //std::cout << b << '\n';
+	maxb b = ~(dl | dr | ex | (x2 << 1) | (x2 >> 1) | (x1 << 2) | (x1 >> 2) | (~a[i]));
 
 	while (b != 0) {
 		maxb p = b & (-b); b -= p;
@@ -45,17 +44,14 @@ maxr Try(const maxb dl, const maxb dr, const maxb ex, const maxb x2, const maxb 
 
 
 void Process() {
-	//res = 1;
-	//for (maxn i = 0; i < n; i++) res *= n;
 	res -= Try(0, 0, 0, 0, 0, 0);
 	std::cout << res << '\n';
-	//std::cout << Try(0, 0, 0, 0, 0, 0);
 }
 
 
 int main() {
     freopen("bseq.inp", "r", stdin);
-    //freopen("bseq.out", "w", stdout);
+    freopen("bseq1.out", "w", stdout);
 
     std::ios_base::sync_with_stdio(0);
     std::cin.tie(0);

@@ -25,6 +25,7 @@ void Prepare() {
         std::cin >> s;
 
         cnt[i] = s.size();
+        req[i] = 0;
         if (s == "?") req[i] = BIT, cnt[i] = n;
         else for(maxn j = 0; j < s.size(); j++) req[i] |= shl(num(s[j]));
     }
@@ -48,7 +49,7 @@ maxa Try(const maxn idx, const maxb bl, const maxb br, const maxb b, const maxb 
 
     while (B != 0) {
         //std::cout << B << '\n';
-        maxb i = B & (-B); B &= (~i);
+        maxb i = B & (-B); B -= i;
         //std::cout << "i " << i << ' ' << B << '\n';
         re += Try(idx + 1, (bl | i) << 1, (br | i) >> 1, b | i, c1, i);
     }
@@ -69,7 +70,7 @@ void Process() {
 
 int main() {
     freopen("bseq.inp", "r", stdin);
-    //freopen("bseq.out", "w", stdout);
+    freopen("bseq.out", "w", stdout);
 
     std::ios_base::sync_with_stdio(0);
     std::cin.tie(0);
