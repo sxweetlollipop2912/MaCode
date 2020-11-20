@@ -1,0 +1,2 @@
+Cho số nguyên dương M <= 10^6. Đếm tất cả các cặp p, q (p < q) thoả: tổng ước của p = q và tổng ước của q = p.
+Ở đây tổng ước của 1 số ko tính chính số đó.
