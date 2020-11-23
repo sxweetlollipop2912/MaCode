@@ -1,0 +1,2 @@
+VD: trong mp tọa độ Oxy, cho tg ABC, A(xa, ya), B(xb, yb), C(xc, yc), đoạn thẳng MN. 
+Tính độ dài đoạn thẳng nằm trong tg ABC.
