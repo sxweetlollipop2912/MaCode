@@ -1,0 +1,3 @@
+BT1: Cho 1 do thi vo huong lien thong ko trong so. Tim 1 do thi con day du co so dinh nhieu nhat. (max elique)
+BT2: Cho 1 do thi vo huong lien thong co trong so G = (V,E) va tap L con V. Tim 1 cay chua tat ca cac dinh thuoc L
+sao cho chieu dai cay la be nhat.

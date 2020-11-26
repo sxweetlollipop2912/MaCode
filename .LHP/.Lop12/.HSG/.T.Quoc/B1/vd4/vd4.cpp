@@ -7,7 +7,7 @@
 
 typedef long long maxn;
 
-maxn N, M, lp[maxN], pw[maxN], sum[maxN], res;
+maxn N, M, pw[maxN], sum[maxN], res;
 std::vector <maxn> pr;
 
 
@@ -19,20 +19,20 @@ void Prepare() {
 void Era() {
     sum[1] = 1;
     for(maxn i = 2; i <= N; i++) {
-        if (!lp[i]) {
-            lp[i] = i, sum[i] = i + 1, pw[i] = i; pr.push_back(i);
+        if (!pw[i]) {
+            pw[i] = i, sum[i] = i + 1; pr.push_back(i);
         }
-        for(maxn j = 0; j < pr.size() && pr[j] <= lp[i] && pr[j] * i <= N; j++) {
+        for(maxn j = 0; j < pr.size() && pr[j] * i <= N; j++) {
             maxn x = pr[j] * i;
-            lp[x] = pr[j];
             
             if (i % pr[j] == 0) {
-                pw[x] = pw[i] * lp[x];
-                sum[x] = sum[x / pw[x]] * (pw[x] * lp[x] - 1) / (lp[x] - 1);
+                pw[x] = pw[i] * pr[j];
+                sum[x] = sum[x / pw[x]] * (pw[x] * pr[j] - 1) / (pr[j] - 1);
+                break;
             }
             else {
-                pw[x] = lp[x];
-                sum[x] = sum[i] * (1 + lp[x]);
+                pw[x] = pr[j];
+                sum[x] = sum[i] * (1 + pr[j]);
             }
         }
     }
