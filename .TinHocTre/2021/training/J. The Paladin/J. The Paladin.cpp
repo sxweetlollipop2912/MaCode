@@ -1,21 +1,3 @@
-// AC
-// Dùng Dijkstra.
-//
-// Giải thích:
-// Giả sử kq = s: abcba, K = 5
-// Vì là palindrome nên thuật chia đôi s ra và tách thành: ab - bc
-// "ab" và "bc" đc xem là 2 đỉnh trong graph, với "ab" nối 1 chiều tới "bc".
-//
-// Về việc dặt tên đỉnh: vì "ab" có thể xuất hiện nhiều lần, thuật sẽ đặt tên đỉnh là "ab-1", "ab-2",...,
-// với các số là vị trí đặt ab trong xâu kq.
-//
-// Do đã chia đôi s nên thuật phải tính toán lại cost, cụ thể cost("ab") = cost("ab") + cost("ba").
-// Lưu ý: cost này là trọng số của đỉnh, k phải của cạnh.
-//
-// Chạy Dijkstra, với depth = K / 2, sau đó lấy kq (tính toán kq trong trg hợp K chẵn và lẻ có thể khác nhau).
-//
-// (Số đỉnh tối đa = 676 * (100 / 2) = 33800).
-
 #include <iostream>
 #include <algorithm>
 #include <vector>

@@ -1,12 +1,3 @@
-// AC
-// Thuật: TKNP size của robot, sau đó ktra = BFS
-//
-// BFS: 
-// Dùng prefix sum mảng 2d để kiểm tra có ô obscured trong 1 phạm vi nhất định k (mảng T, hàm check),
-// và đánh dấu 1 phạm vi đã đc robot quét qua (mảng cv, hàm cover).
-//
-// Edge case (probably): ô (1, 1) k phải lúc nào cũng trống :v
-
 #include <iostream>
 #include <algorithm>
 #include <vector>

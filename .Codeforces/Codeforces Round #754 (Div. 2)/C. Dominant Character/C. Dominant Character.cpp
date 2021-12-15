@@ -1,4 +1,5 @@
 // C. Dominant Character
+// not done
 #include <iostream>
 #include <vector>
 #include <algorithm>
