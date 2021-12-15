@@ -1,4 +1,4 @@
-// undone, pending Result
+// not done, pending Result
 #include <iostream>
 #include <cstdio>
 #include <algorithm>

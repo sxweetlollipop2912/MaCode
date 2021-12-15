@@ -1,4 +1,4 @@
-// UNDONE
+// not done
 //F. Fruit Sequences
 #include <iostream>
 #include <algorithm>

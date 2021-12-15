@@ -1,4 +1,4 @@
-//Undone
+//not done
 //D. Bouncing Boomerangs
 #include <iostream>
 #include <algorithm>

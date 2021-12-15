@@ -1,5 +1,5 @@
 //D. Bombaa va hoan vi
-//UNDONE
+//not done
 #include <iostream>
 #include <algorithm>
 #include <set>
